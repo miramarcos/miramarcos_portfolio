@@ -3,7 +3,7 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { ArrowDown, Linkedin } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 
-const techStack = ['React', 'TypeScript', 'Node.js', 'Azure', 'PostgreSQL'];
+const techStack = ['C#', '.NET Core', 'ASP.NET Core', 'Blazor', 'Azure', 'React'];
 
 const containerVariants = {
   hidden: {},
@@ -141,8 +141,8 @@ export function Hero() {
             variants={itemVariant}
             className="max-w-2xl text-lg sm:text-xl text-text-secondary leading-relaxed"
           >
-            Full-stack engineer specializing in scalable applications, API integrations,
-            and cloud-native solutions.
+            Full-stack engineer specializing in the Microsoft/.NET stack — building scalable
+            web apps, APIs, and enterprise solutions with C#, ASP.NET Core, and Azure.
           </motion.p>
 
           {/* CTA buttons */}
@@ -180,7 +180,7 @@ export function Hero() {
           {/* Social links */}
           <motion.div variants={itemVariant} className="flex items-center gap-4 mt-1">
             <motion.a
-              href="https://linkedin.com/in/miramarcos"
+              href="https://www.linkedin.com/in/mirakrismarcos/"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 text-text-secondary hover:text-text-primary transition-colors"

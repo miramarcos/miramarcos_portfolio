@@ -159,8 +159,8 @@ export function Contact() {
                 <ContactCard
                   icon={Linkedin}
                   label="LinkedIn"
-                  value="linkedin.com/in/miramarcos"
-                  href="https://linkedin.com/in/miramarcos"
+                  value="linkedin.com/in/mirakrismarcos"
+                  href="https://www.linkedin.com/in/mirakrismarcos/"
                   color="#0A66C2"
                 />
               </FadeIn>

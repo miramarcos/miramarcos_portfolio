@@ -8,35 +8,38 @@ const stats = [
   { value: 'Full', label: 'Stack' },
 ];
 
-const codeSnippet = `// Enterprise-grade API service
-@Injectable()
-export class InventoryService {
-  constructor(
-    @InjectRepository(Item)
-    private readonly repo: Repository<Item>,
-    private readonly events: EventEmitter2,
-  ) {}
+const codeSnippet = `// ASP.NET Core — REST API Controller
+[ApiController]
+[Route("api/[controller]")]
+public class ProjectsController : ControllerBase
+{
+    private readonly IProjectService _service;
 
-  async updateStock(
-    warehouseId: string,
-    dto: UpdateStockDto,
-  ): Promise<StockResult> {
-    const item = await this.repo.findOneOrFail({
-      where: { warehouseId },
-      lock: { mode: 'pessimistic_write' },
-    });
+    public ProjectsController(IProjectService service)
+    {
+        _service = service;
+    }
 
-    item.quantity += dto.delta;
-    await this.repo.save(item);
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById(int id)
+    {
+        var project = await _service.GetByIdAsync(id);
+        if (project is null)
+            return NotFound();
 
-    this.events.emit('stock.updated', {
-      warehouseId,
-      delta: dto.delta,
-      timestamp: new Date(),
-    });
+        return Ok(project);
+    }
 
-    return { success: true, quantity: item.quantity };
-  }
+    [HttpPost]
+    public async Task<IActionResult> Create(
+        [FromBody] CreateProjectDto dto)
+    {
+        var result = await _service.CreateAsync(dto);
+        return CreatedAtAction(
+            nameof(GetById),
+            new { id = result.Id },
+            result);
+    }
 }`;
 
 export function About() {
@@ -66,16 +69,16 @@ export function About() {
             <FadeIn direction="up" delay={0.2}>
               <div className="flex flex-col gap-4 text-text-secondary leading-relaxed">
                 <p>
-                  I&apos;m a full-stack engineer with 5+ years of experience building software
-                  that delivers measurable business value. I specialize in the React,
-                  Node.js, and TypeScript ecosystem — from architecting scalable APIs to
-                  crafting polished, performant user interfaces.
+                  I&apos;m a full-stack developer with 5+ years of experience specializing
+                  in the Microsoft/.NET stack — building enterprise web applications, REST APIs,
+                  and desktop solutions using C#, ASP.NET Core, Blazor, and SQL Server.
                 </p>
                 <p>
-                  My background spans healthcare, logistics, and fintech. I&apos;m comfortable
-                  across the entire stack — UI design systems, complex database modeling,
-                  cloud deployment on Azure, and integrating third-party APIs at scale. I
-                  ship fast, build to last, and care deeply about the engineering craft.
+                  I&apos;ve worked across a range of industries and project types, from
+                  multi-country corporate platforms to internal CRMs and ETL automation.
+                  I&apos;m comfortable across the full stack — backend services, frontend
+                  interfaces with React or Blazor, Azure DevOps pipelines, and database
+                  design. I ship clean, maintainable code and thrive in Agile teams.
                 </p>
               </div>
             </FadeIn>
@@ -112,7 +115,7 @@ export function About() {
                     <span className="w-3 h-3 rounded-full bg-yellow-500/70" />
                     <span className="w-3 h-3 rounded-full bg-green-500/70" />
                     <span className="ml-3 text-xs text-text-secondary/60 font-mono">
-                      inventory.service.ts
+                      ProjectsController.cs
                     </span>
                   </div>
 
@@ -161,11 +164,11 @@ function colorizeCode(line: string): string {
       (m) => `<span style="color:#f97583">${m}</span>`
     )
     .replace(
-      /\b(async|await|const|return|new|import|export|class|extends|private|readonly|true|false)\b/g,
+      /\b(async|await|public|private|return|new|using|namespace|class|interface|void|var|if|null|is)\b/g,
       (m) => `<span style="color:#f97583">${m}</span>`
     )
     .replace(
-      /\b(string|number|boolean|void|Promise|Repository|Injectable)\b/g,
+      /\b(string|int|bool|Task|IActionResult|ActionResult|IProjectService|CreateProjectDto)\b/g,
       (m) => `<span style="color:#79b8ff">${m}</span>`
     )
     .replace(

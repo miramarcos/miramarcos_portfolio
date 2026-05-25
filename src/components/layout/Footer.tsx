@@ -5,7 +5,7 @@ const socials = [
   {
     icon: Linkedin,
     label: 'LinkedIn',
-    href: 'https://linkedin.com/in/miramarcos',
+    href: 'https://www.linkedin.com/in/mirakrismarcos/',
   },
   {
     icon: Mail,
