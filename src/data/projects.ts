@@ -2,46 +2,44 @@ import type { Project } from '@/types';
 
 export const projects: Project[] = [
   {
-    id: 'enterprise-inventory',
-    title: 'Enterprise Inventory Management Platform',
+    id: 'corporate-website-platform',
+    title: 'Multi-Country Corporate Website Platform',
     problem:
-      'A mid-size logistics company needed real-time inventory tracking across 12 warehouses with role-based access control and audit logging.',
-    stack: ['React', 'TypeScript', 'NestJS', 'PostgreSQL', 'Azure'],
+      'A global company needed a unified yet localized web presence across multiple countries, with content editors managing region-specific content independently.',
+    stack: ['C#', 'Kentico', 'React.js', 'SQL', 'Azure DevOps', 'CI/CD'],
     impact:
-      'Reduced inventory discrepancies by 40% and saved 20+ hours/week of manual reconciliation.',
-    githubUrl: 'https://github.com/miramarcos',
+      'Delivered a scalable multi-country website platform supporting multiple locales, enabling content editors to manage and publish independently per region.',
     demoUrl: '#',
     featured: true,
   },
   {
-    id: 'ai-document-processing',
-    title: 'AI-Powered Document Processing API',
+    id: 'crm-system',
+    title: 'Enterprise CRM Application',
     problem:
-      'A financial services client needed automated extraction and classification of unstructured documents at scale.',
-    stack: ['Node.js', 'TypeScript', 'REST APIs', 'PostgreSQL', 'Azure Functions'],
+      'The internal team needed a robust CRM to manage client relationships, with both content editing capabilities and custom backend features.',
+    stack: ['C#', 'Kentico', 'SQL', 'Azure DevOps', 'CI/CD'],
     impact:
-      'Processed 10,000+ documents/day with 94% accuracy, replacing a full manual review team.',
-    githubUrl: 'https://github.com/miramarcos',
+      'Delivered backend and frontend CRM features on demand, streamlining client data management and improving content editor workflows.',
     demoUrl: '#',
   },
   {
-    id: 'saas-client-portal',
-    title: 'SaaS Client Portal with Real-Time Analytics',
+    id: 'client-systems-suite',
+    title: 'Full-Stack Client Systems Suite',
     problem:
-      'Multiple clients needed a unified self-service portal with live KPI dashboards and automated reporting.',
-    stack: ['Next.js', 'TypeScript', 'NestJS', 'PostgreSQL', 'Tailwind CSS'],
-    impact: 'Onboarded 15 enterprise clients, reduced support tickets by 60%.',
-    githubUrl: 'https://github.com/miramarcos',
+      'A client had 300+ accumulated backlog items spanning web apps, APIs, desktop apps, and internal tools with no clear path to delivery.',
+    stack: ['Blazor Web Assembly', 'ASP.NET Core', 'C#', 'WinForms', 'SQL', 'JavaScript', 'jQuery', 'CI/CD'],
+    impact:
+      'Cleared and deployed 300+ backlog items across websites, web applications, APIs, and desktop apps using Agile and CI/CD practices.',
     demoUrl: '#',
   },
   {
-    id: 'scheduling-booking-system',
-    title: 'Multi-Tenant Scheduling & Booking System',
+    id: 'etl-azure-automation',
+    title: 'ETL Automation & Azure Pipeline Management',
     problem:
-      'A healthcare services company needed a HIPAA-aware scheduling platform supporting multiple clinic locations.',
-    stack: ['React', 'Node.js', 'PostgreSQL', 'Azure', 'REST APIs'],
-    impact: 'Replaced 3 legacy systems, now serving 5,000+ monthly bookings.',
-    githubUrl: 'https://github.com/miramarcos',
+      'Manual data processing and inconsistent deployments were causing reporting inaccuracies and slowing down release cycles across environments.',
+    stack: ['C#', '.NET', 'Windows Services', 'Azure DevOps', 'SQL', 'Azure Pipelines'],
+    impact:
+      'Automated ETL workflows via Windows Services, improving reporting accuracy, and managed Azure Pipeline deployments across non-production and production environments.',
     demoUrl: '#',
   },
 ];

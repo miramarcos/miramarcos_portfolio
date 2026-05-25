@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { ArrowDown, Github, Linkedin } from 'lucide-react';
+import { ArrowDown, Linkedin } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 
 const techStack = ['React', 'TypeScript', 'Node.js', 'Azure', 'PostgreSQL'];
@@ -179,17 +179,6 @@ export function Hero() {
 
           {/* Social links */}
           <motion.div variants={itemVariant} className="flex items-center gap-4 mt-1">
-            <motion.a
-              href="https://github.com/miramarcos"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-text-secondary hover:text-text-primary transition-colors"
-              whileHover={{ scale: 1.15, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              aria-label="GitHub"
-            >
-              <Github className="w-5 h-5" />
-            </motion.a>
             <motion.a
               href="https://linkedin.com/in/miramarcos"
               target="_blank"

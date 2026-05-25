@@ -101,18 +101,20 @@ function ProjectCard({
 
           {/* Links */}
           <div className="flex items-center gap-3 pt-1">
-            <motion.a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-text-secondary hover:text-text-primary bg-white/5 hover:bg-white/10 rounded-lg border border-white/8 hover:border-white/15 transition-all duration-200"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              aria-label="View on GitHub"
-            >
-              <Github className="w-4 h-4" />
-              GitHub
-            </motion.a>
+            {project.githubUrl && (
+              <motion.a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-text-secondary hover:text-text-primary bg-white/5 hover:bg-white/10 rounded-lg border border-white/8 hover:border-white/15 transition-all duration-200"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                aria-label="View on GitHub"
+              >
+                <Github className="w-4 h-4" />
+                GitHub
+              </motion.a>
+            )}
             {project.demoUrl !== '#' && (
               <motion.a
                 href={project.demoUrl}
@@ -164,21 +166,6 @@ export function Projects() {
           ))}
         </div>
 
-        <FadeIn direction="up" delay={0.4}>
-          <div className="mt-12 text-center">
-            <motion.a
-              href="https://github.com/miramarcos"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm text-text-secondary hover:text-primary transition-colors duration-200"
-              whileHover={{ x: 3 }}
-            >
-              <Github className="w-4 h-4" />
-              View more projects on GitHub
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </motion.a>
-          </div>
-        </FadeIn>
       </div>
     </section>
   );

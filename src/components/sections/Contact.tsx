@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Github, Linkedin, Copy, Check, Send, CheckCircle, type LucideProps } from 'lucide-react';
+import { Mail, Linkedin, Copy, Check, Send, CheckCircle, type LucideProps } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { FadeIn } from '@/components/animations/FadeIn';
 import { Button } from '@/components/ui/Button';
@@ -153,15 +153,6 @@ export function Contact() {
                   value="mirakrismarcos@gmail.com"
                   copyable
                   color="#3B82F6"
-                />
-              </FadeIn>
-              <FadeIn direction="up" delay={0.35}>
-                <ContactCard
-                  icon={Github}
-                  label="GitHub"
-                  value="github.com/miramarcos"
-                  href="https://github.com/miramarcos"
-                  color="#8B5CF6"
                 />
               </FadeIn>
               <FadeIn direction="up" delay={0.4}>

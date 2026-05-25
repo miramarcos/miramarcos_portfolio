@@ -1,12 +1,7 @@
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Linkedin, Mail } from 'lucide-react';
 
 const socials = [
-  {
-    icon: Github,
-    label: 'GitHub',
-    href: 'https://github.com/miramarcos',
-  },
   {
     icon: Linkedin,
     label: 'LinkedIn',

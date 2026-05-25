@@ -4,7 +4,7 @@ export interface Project {
   problem: string;
   stack: string[];
   impact: string;
-  githubUrl: string;
+  githubUrl?: string;
   demoUrl: string;
   featured?: boolean;
 }

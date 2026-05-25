@@ -2,45 +2,71 @@ import type { Experience } from '@/types';
 
 export const experiences: Experience[] = [
   {
-    id: 'techcorp',
-    role: 'Senior Full-Stack Engineer',
-    company: 'TechCorp Solutions',
-    period: '2022 – Present',
+    id: 'delaware',
+    role: 'Full Stack Developer',
+    company: 'delaware Philippines',
+    period: 'May 2025 – Present',
     description:
-      'Led development of enterprise web applications used by 50,000+ users. Architected microservices APIs consumed by 8 downstream systems.',
+      'Builds and maintains multi-country company websites and internal applications using C#, Kentico, SQL, and React.js, handling both frontend and backend of the CRM while managing CI/CD pipelines and coordinating testing to ensure compliance with industry standards.',
     highlights: [
-      'Architected and delivered a multi-tenant SaaS platform from 0 to 50,000+ active users',
-      'Designed microservices APIs consumed by 8 downstream systems across the organization',
-      'Implemented CI/CD pipelines reducing deployment time by 70%',
-      'Mentored 3 junior engineers and established team coding standards',
+      'Develops and maintains company websites across multiple countries using C#, Kentico, SQL, and React.js',
+      'Works on both backend and frontend of company CRM to deliver features requested by content editors',
+      'Manages build and release pipelines using Agile and DevOps methodologies with CI/CD practices',
+      'Coordinates testing and validation to ensure compliance with industry standards',
     ],
   },
   {
-    id: 'digital-agency',
-    role: 'Full-Stack Developer',
-    company: 'Digital Agency Pro',
-    period: '2020 – 2022',
+    id: 'agile-tech-ops',
+    role: 'Full Stack Developer',
+    company: 'Agile Tech Ops – UCPM',
+    period: 'April 2024 – May 2025',
     description:
-      'Built and delivered 12+ client projects across healthcare, logistics, and finance verticals.',
+      'Delivered a wide range of client-facing systems — websites, web apps, APIs, and desktop applications — using the .NET ecosystem (Blazor, ASP.NET Core, C#, WinForms) and front-end technologies, while applying Agile and CI/CD practices that enabled the team to ship over 300 backlog items.',
     highlights: [
-      'Delivered 12+ production applications across healthcare, logistics, and finance industries',
-      'Integrated complex third-party APIs including payment gateways, EHR systems, and ERPs',
-      'Built real-time data dashboards handling thousands of concurrent users',
-      'Collaborated directly with clients to translate business needs into technical solutions',
+      'Built websites, web apps, APIs, and desktop applications using Blazor, ASP.NET Core, C#, WinForms, and SQL',
+      'Implemented unit tests with Moq and MSTest to ensure component-level reliability',
+      'Leveraged Agile and CI/CD practices to help the team clear and deploy 300+ client backlog items',
+      'Coordinated testing and validation to meet industry compliance standards',
     ],
   },
   {
-    id: 'startuphub',
-    role: 'Junior Developer',
-    company: 'StartupHub',
-    period: '2019 – 2020',
+    id: 'accenture-manulife',
+    role: 'Custom Application Development Analyst',
+    company: 'Accenture PH – Manulife',
+    period: 'Feb 2023 – March 2024',
     description:
-      'Gained foundational experience building React SPAs and Node.js backends in a fast-paced startup environment.',
+      'Supported IT operations by onboarding and training new staff, managing employee records and reimbursements in Workday and Fieldglass, and collaborating cross-functionally to efficiently resolve software, hardware, and operational challenges.',
     highlights: [
-      'Developed React single-page applications with RESTful API integrations',
-      'Built and maintained Node.js backend services and database schemas',
-      'Contributed to agile sprints and participated in code reviews',
-      'Rapidly iterated on features based on user feedback and analytics',
+      'Facilitated onboarding and technical training for new IT staff',
+      'Managed employee records, reimbursements, and data in Workday and Fieldglass',
+      'Collaborated with teams to address and resolve software, hardware, and operational issues',
+    ],
+  },
+  {
+    id: 'accenture-cio',
+    role: 'Application Development Analyst',
+    company: 'Accenture PH – CIO Social Apps',
+    period: 'June 2022 – Feb 2023',
+    description:
+      'Designed, developed, and maintained software solutions for clients and end users, managed Azure Pipeline deployments across environments, and automated ETL workflows through Windows Services to improve reporting accuracy.',
+    highlights: [
+      'Designed, developed, and maintained software solutions ensuring smooth functionality for clients',
+      'Managed Azure Pipeline deployments across non-production and production environments',
+      'Automated data extraction, transformation, and loading (ETL) via Windows Services to enhance reporting accuracy',
+      'Conducted training sessions and helped clients troubleshoot software and hardware issues',
+    ],
+  },
+  {
+    id: 'accenture-social',
+    role: 'Application Development Associate',
+    company: 'Accenture PH – Social Collab Apps',
+    period: 'Dec 2020 – June 2022',
+    description:
+      'Built and maintained internal collaboration and reporting applications, developed APIs and stored procedures to optimize data management, and created tooling to extract and report on employee engagement data.',
+    highlights: [
+      'Developed and maintained internal applications for team communication, collaboration, and reporting',
+      'Designed APIs and stored procedures to improve data retrieval, integration, and processing',
+      'Built a solution for extracting employee follower data, improving reporting accuracy and account management',
     ],
   },
 ];
