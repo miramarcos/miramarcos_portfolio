@@ -21,25 +21,26 @@ const expertise = [
 function TimelineItem({
   experience,
   index,
+  direction = 'left',
 }: {
   experience: Experience;
   index: number;
+  direction?: 'left' | 'right';
 }) {
-  const { ref, inView } = useInView({ threshold: 0.2, triggerOnce: true });
+  const { ref, inView } = useInView({ threshold: 0.15, triggerOnce: true });
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, x: -20 }}
+      initial={{ opacity: 0, x: direction === 'left' ? -20 : 20 }}
       animate={inView ? { opacity: 1, x: 0 } : {}}
       transition={{
         duration: 0.6,
-        delay: index * 0.15,
+        delay: index * 0.1,
         ease: [0.21, 0.47, 0.32, 0.98],
       }}
       className="relative pl-8"
     >
-      {/* Dot */}
       <div className="absolute left-0 top-1.5 w-3.5 h-3.5 rounded-full bg-primary border-2 border-background shadow-lg shadow-primary/40 z-10" />
 
       <div className="bg-card rounded-xl border border-white/8 p-6 hover:border-white/15 transition-colors duration-300">
@@ -75,16 +76,37 @@ function TimelineItem({
   );
 }
 
-export function Resume() {
-  const sectionRef = useRef<HTMLDivElement>(null);
+function TimelineColumn({ items, direction }: { items: Experience[]; direction: 'left' | 'right' }) {
+  const colRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
-    target: sectionRef,
+    target: colRef,
     offset: ['start end', 'end start'],
   });
   const lineHeight = useTransform(scrollYProgress, [0, 0.7], ['0%', '100%']);
 
   return (
-    <section id="resume" className="relative py-28 bg-background overflow-hidden" ref={sectionRef}>
+    <div className="relative" ref={colRef}>
+      <div className="absolute left-[6px] top-0 bottom-0 w-px bg-white/8">
+        <motion.div
+          className="absolute top-0 left-0 right-0 bg-gradient-to-b from-primary to-primary/30 rounded-full"
+          style={{ height: lineHeight }}
+        />
+      </div>
+      <div className="flex flex-col gap-6">
+        {items.map((exp, i) => (
+          <TimelineItem key={exp.id} experience={exp} index={i} direction={direction} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export function Resume() {
+  const leftExperiences = experiences.slice(0, 3);
+  const rightExperiences = experiences.slice(3);
+
+  return (
+    <section id="resume" className="relative py-28 bg-background overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-surface to-background pointer-events-none" />
 
       <div className="relative max-w-6xl mx-auto px-6">
@@ -101,27 +123,16 @@ export function Resume() {
           </FadeIn>
         </div>
 
-        <div className="grid lg:grid-cols-[1fr,420px] gap-16 items-start">
-          {/* Timeline */}
-          <div className="relative">
-            {/* Animated vertical line */}
-            <div className="absolute left-[6px] top-0 bottom-0 w-px bg-white/8">
-              <motion.div
-                className="absolute top-0 left-0 right-0 bg-gradient-to-b from-primary to-primary/30 rounded-full"
-                style={{ height: lineHeight }}
-              />
-            </div>
+        <div className="grid lg:grid-cols-2 gap-10 items-start">
+          {/* Left column — 3 most recent */}
+          <TimelineColumn items={leftExperiences} direction="left" />
 
-            <div className="flex flex-col gap-6">
-              {experiences.map((exp, i) => (
-                <TimelineItem key={exp.id} experience={exp} index={i} />
-              ))}
-            </div>
-          </div>
-
-          {/* Right panel */}
+          {/* Right column — 2 older + cards */}
           <div className="flex flex-col gap-6">
-            <FadeIn direction="left" delay={0.2}>
+            <TimelineColumn items={rightExperiences} direction="right" />
+
+            {/* Key Expertise */}
+            <FadeIn direction="right" delay={0.2}>
               <div className="bg-card rounded-2xl border border-white/8 p-7">
                 <h3 className="font-semibold text-text-primary mb-5 flex items-center gap-2">
                   <CheckCircle2 className="w-5 h-5 text-primary" />
@@ -145,7 +156,8 @@ export function Resume() {
               </div>
             </FadeIn>
 
-            <FadeIn direction="left" delay={0.3}>
+            {/* Download CV */}
+            <FadeIn direction="right" delay={0.3}>
               <div className="bg-gradient-to-br from-primary/15 to-primary/5 rounded-2xl border border-primary/25 p-7">
                 <p className="text-sm font-semibold text-primary mb-1">Full Resume</p>
                 <h3 className="text-xl font-bold text-text-primary mb-3">
@@ -169,7 +181,8 @@ export function Resume() {
               </div>
             </FadeIn>
 
-            <FadeIn direction="left" delay={0.4}>
+            {/* CTA */}
+            <FadeIn direction="right" delay={0.4}>
               <div className="bg-card rounded-2xl border border-white/8 p-7 text-center">
                 <p className="text-text-secondary text-sm mb-4">
                   Looking for a reliable engineer to join your team or build your next product?
