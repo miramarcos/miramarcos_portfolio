@@ -8,39 +8,6 @@ const stats = [
   { value: 'Full', label: 'Stack' },
 ];
 
-const codeSnippet = `// ASP.NET Core — REST API Controller
-[ApiController]
-[Route("api/[controller]")]
-public class ProjectsController : ControllerBase
-{
-    private readonly IProjectService _service;
-
-    public ProjectsController(IProjectService service)
-    {
-        _service = service;
-    }
-
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetById(int id)
-    {
-        var project = await _service.GetByIdAsync(id);
-        if (project is null)
-            return NotFound();
-
-        return Ok(project);
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> Create(
-        [FromBody] CreateProjectDto dto)
-    {
-        var result = await _service.CreateAsync(dto);
-        return CreatedAtAction(
-            nameof(GetById),
-            new { id = result.Id },
-            result);
-    }
-}`;
 
 export function About() {
   return (
@@ -100,47 +67,27 @@ export function About() {
             </div>
           </div>
 
-          {/* Right: Code block */}
+          {/* Right: Profile photo */}
           <ParallaxWrapper speed={0.3} className="hidden lg:block">
             <FadeIn direction="left" delay={0.2}>
-              <div className="relative">
+              <div className="relative flex justify-center">
                 {/* Glow */}
-                <div className="absolute -inset-4 bg-primary/5 rounded-2xl blur-2xl" />
+                <div className="absolute -inset-4 bg-primary/10 rounded-3xl blur-2xl" />
+                <div className="absolute -bottom-4 -right-4 w-40 h-40 rounded-full bg-purple-500/15 blur-2xl" />
 
-                {/* Terminal window */}
-                <div className="relative bg-[#0d1117] rounded-2xl border border-white/10 overflow-hidden shadow-2xl">
-                  {/* Traffic lights */}
-                  <div className="flex items-center gap-2 px-4 py-3 border-b border-white/8 bg-[#161b22]">
-                    <span className="w-3 h-3 rounded-full bg-red-500/70" />
-                    <span className="w-3 h-3 rounded-full bg-yellow-500/70" />
-                    <span className="w-3 h-3 rounded-full bg-green-500/70" />
-                    <span className="ml-3 text-xs text-text-secondary/60 font-mono">
-                      ProjectsController.cs
-                    </span>
-                  </div>
-
-                  {/* Code */}
-                  <pre className="p-5 text-xs font-mono leading-relaxed overflow-x-auto">
-                    <code>
-                      {codeSnippet.split('\n').map((line, i) => (
-                        <span key={i} className="block">
-                          <span className="select-none text-white/20 mr-4 text-right inline-block w-6">
-                            {i + 1}
-                          </span>
-                          <span
-                            dangerouslySetInnerHTML={{
-                              __html: colorizeCode(line),
-                            }}
-                          />
-                        </span>
-                      ))}
-                    </code>
-                  </pre>
+                {/* Photo */}
+                <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl w-full max-w-sm">
+                  <img
+                    src="/profile.jpg"
+                    alt="Mira Kris Marcos"
+                    className="w-full h-full object-cover object-top"
+                  />
+                  {/* Subtle overlay gradient at bottom */}
+                  <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background/60 to-transparent" />
                 </div>
 
                 {/* Floating accent */}
-                <div className="absolute -top-4 -right-4 w-20 h-20 rounded-full bg-primary/20 blur-xl" />
-                <div className="absolute -bottom-4 -left-4 w-16 h-16 rounded-full bg-purple-500/20 blur-xl" />
+                <div className="absolute -top-4 -left-4 w-20 h-20 rounded-full bg-primary/20 blur-xl" />
               </div>
             </FadeIn>
           </ParallaxWrapper>
@@ -148,32 +95,4 @@ export function About() {
       </div>
     </section>
   );
-}
-
-function colorizeCode(line: string): string {
-  return line
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(
-      /\/\/.*/g,
-      (m) => `<span style="color:#6a737d">${m}</span>`
-    )
-    .replace(
-      /(@\w+)/g,
-      (m) => `<span style="color:#f97583">${m}</span>`
-    )
-    .replace(
-      /\b(async|await|public|private|return|new|using|namespace|class|interface|void|var|if|null|is)\b/g,
-      (m) => `<span style="color:#f97583">${m}</span>`
-    )
-    .replace(
-      /\b(string|int|bool|Task|IActionResult|ActionResult|IProjectService|CreateProjectDto)\b/g,
-      (m) => `<span style="color:#79b8ff">${m}</span>`
-    )
-    .replace(
-      /('.*?'|".*?"|`.*?`)/g,
-      (m) => `<span style="color:#9ecbff">${m}</span>`
-    )
-    .replace(/\s/g, (m) => m === ' ' ? '&nbsp;' : m);
 }
