@@ -8,12 +8,14 @@ import { experiences } from '@/data/experience';
 import type { Experience } from '@/types';
 
 const expertise = [
-  'React & TypeScript SPA/SSR architectures',
-  'NestJS microservices and REST API design',
-  'PostgreSQL schema design and query optimization',
-  'Azure cloud deployment and CI/CD automation',
-  'Third-party API integrations at production scale',
-  'Cross-functional collaboration and technical leadership',
+  'C#, .NET / .NET Core & ASP.NET Core development',
+  'Blazor Web Assembly & Blazor Server applications',
+  'REST API design and third-party integrations',
+  'SQL Server, MySQL & database design',
+  'Azure DevOps, CI/CD pipelines & Agile delivery',
+  'Unit testing with MSTest & Moq',
+  'React.js frontend development',
+  'Kentico CMS development',
 ];
 
 function TimelineItem({
